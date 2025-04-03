@@ -2,11 +2,17 @@ package Fema.CadastroDeNinjas.Missoes;
 
 import Fema.CadastroDeNinjas.Ninjas.NinjaModel;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Entity
 @Table(name = "tb_missao")
+@NoArgsConstructor
+@AllArgsConstructor
+@Data //Cria todos os getters e setters
 public class MissaoModel {
 
     @Id
@@ -21,19 +27,4 @@ public class MissaoModel {
     @OneToMany(mappedBy = "missoes")
     private List<NinjaModel> ninjas;
 
-    public MissaoModel() {
-    }
-
-    public MissaoModel(String nome, String dificuldade) {
-        this.nome = nome;
-        this.dificuldade = dificuldade;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
 }
