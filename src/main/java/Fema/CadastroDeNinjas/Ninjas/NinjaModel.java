@@ -1,8 +1,8 @@
-package Fema.CadastroDeNinjas;
+package Fema.CadastroDeNinjas.Ninjas;
 
+import Fema.CadastroDeNinjas.Missoes.MissaoModel;
 import jakarta.persistence.*;
 
-//Teste do git log
 // Entity ele transforma uma classe em uma entidade do BD
 @Entity
 @Table(name = "tb_cadastro")
@@ -11,9 +11,17 @@ public class NinjaModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String nome;
+
     private String email;
+
     private int idade;
+
+    // @ManyToOne um ninja tem uma única missão!
+    @ManyToOne
+    @JoinColumn(name = "missoes_id") // Foreing Key ou chave estrangeira
+    private MissaoModel missoes;
 
     public NinjaModel() {
     }
